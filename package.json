@@ -1,7 +1,7 @@
 {
-  "name": "-y",
+  "name": "projet",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "concurrently \"cd backend && npm run dev \" \"cd client && npm start\""
   },
