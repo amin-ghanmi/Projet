@@ -1,13 +1,36 @@
-import React from 'react'
-
+import React from "react";
+import { Card } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import { Redirect } from "react-router";
+import UpdateUser from "./UpdateUser";
 
 const UserProfile = () => {
-   
-    return (
+  const { user, isAuth, loading } = useSelector((state) => state.userReducer);
+  return (
+    <div>
+      {loading ? (
+        <h1>Loading ...</h1>
+      ) : !isAuth ? (
+        <Redirect to="/login" />
+      ) : (
         <div>
-            <h1> User Profile </h1>
-        </div>
-    )
-}
+          <Card>
+            <Card.Body>
+              <Card.Text>{user.name}</Card.Text>
 
-export default UserProfile
+              <Card.Text>{user.lastName}</Card.Text>
+              <Card.Text>{user.email}</Card.Text>
+            </Card.Body>
+            <UpdateUser
+        user={user}
+        id={user._id}
+      />
+          </Card>
+        </div>
+      )}
+     
+    </div>
+  );
+};
+
+export default UserProfile;

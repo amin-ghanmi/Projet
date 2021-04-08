@@ -6,7 +6,7 @@ const {AddProductRules,validator}=require('../middleware/bodyValidator');
 
 
 router.post('/add_product',AddProductRules(),validator,addProduct)
-router.put('/update_product',validator,modifiedProduct)
+router.put('/update_product/:id',validator,modifiedProduct)
 router.delete('/delete_product/:id',deleteProduct)
 router.get('/products', getAllProducts)
 

@@ -70,8 +70,43 @@ const login = async (req, res) => {
     }
 }
 
-const getAuthUser = async (req, res) => {
-    res.send({ user: req.user })
+const modifiedUser = async (req, res) => {
+    // const { name , lastName ,email,password } = req.body
+     const userId =req.params.id
+     try {
+         let user = await User.findByIdAndUpdate(userId,{...req.body},{new:true});
+         res.send(
+             user
+         )
+ 
+     } catch (error) {
+         res.send([{msg:'failed to update'}])
+     }
+ }
+
+ const deleteUser =async (req,res)=>{
+    const userId =req.params.id
+    try {
+        let user =await User.findByIdAndDelete(userId)
+        res.send(
+            user
+        )
+    } catch (error) {
+        res.send([{msg:'failed to delete'}])
+    }
 }
 
-module.exports = { register, login, getAuthUser }
+const getAllUsers = async (req, res) => {
+    try {
+        const users = await User.find()
+        res.send(users)
+    } catch (error) {
+        res.send(error)
+    }
+}
+
+const getAuthUser = async (req ,res) =>{
+    res.send({user : req.user})
+}
+
+module.exports = { register, login, getAllUsers , modifiedUser ,deleteUser  , getAuthUser }

@@ -2,7 +2,8 @@ import axios from 'axios'
 import {
     REGISTER_USER, REGISTER_SUCCESS, REGISTER_FAIL,
     LOGIN_USER, LOGIN_FAIL, LOGIN_SUCCESS, GET_PROFILE_USER,
-    GET_PROFILE_SUCCESS, GET_PROFILE_FAIL, LOGOUT
+    GET_PROFILE_SUCCESS, GET_PROFILE_FAIL, LOGOUT,
+     UPDATE_USER, UPDATE_USER_SUCCESS, UPDATE_USER_FAIL, DELETE_USER, DELETE_USER_SUCCESS, DELETE_USER_FAIL
 } from '../const/actionTypes'
 
 
@@ -47,6 +48,44 @@ export const login = (User) => async dispatch => {
         // alert(error.response.data[0].msg)
     }
 }
+
+export const modifiedUser = (id ,formData) => async (dispatch) => {
+  
+    dispatch({
+      type: UPDATE_USER,
+    });
+    try {
+      const { data } = await axios.put(`/api/auth/update_user/${id}` ,formData );
+      dispatch({
+        type: UPDATE_USER_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: UPDATE_USER_FAIL,
+        // payload: error.response.data
+      });
+    }
+  };
+
+  export const deleteUser = (id) => async (dispatch) => {
+    // User { name , lastName , email , password}
+    dispatch({
+      type: DELETE_USER,
+    });
+    try {
+      const { data } = await axios.delete(`/api/auth/delete_user/${id}`);
+      dispatch({
+        type: DELETE_USER_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: DELETE_USER_FAIL,
+        payload: error.response.data,
+      });
+    }
+  };
 
 export const getProfile = () => async dispatch => {
     // User = {email,password}

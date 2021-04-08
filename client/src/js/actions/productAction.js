@@ -33,14 +33,13 @@ export const addProduct = (NewProduct) => async (dispatch) => {
   }
 };
 
-export const modifiedProduct = (id) => async (dispatch) => {
-  // Product = { Article , Image , Description , Price}
-
+export const modifiedProduct = (id ,formData) => async (dispatch) => {
+  
   dispatch({
     type: UPDATE_PRODUCT,
   });
   try {
-    const { data } = await axios.put(`/api/prod/update_product/ ${id}`);
+    const { data } = await axios.put(`/api/prod/update_product/${id}` ,formData);
     dispatch({
       type: UPDATE_PRODUCT_SUCCESS,
       payload: data,
@@ -48,7 +47,7 @@ export const modifiedProduct = (id) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: UPDATE_PRODUCT_FAIL,
-      payload: error.response.data,
+      payload: error.response.data
     });
   }
 };

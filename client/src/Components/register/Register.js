@@ -50,7 +50,7 @@ const Register = () => {
                             <Form.Control type="password" placeholder="Password" onChange={e => setPassword(e.target.value)} value={password} />
                         </Form.Group>
 
-                        <Button variant="primary" type="submit" onClick={registerUser} >
+                        <Button variant="primary" type="submit" className="submit" onClick={registerUser} >
                             Submit
                         </Button>
                     </Form>

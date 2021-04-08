@@ -10,7 +10,10 @@ import { useDispatch } from 'react-redux';
 import { getProfile } from './js/actions/userActions';
 import { useEffect } from 'react';
 import { getAllProducts } from './js/actions/productAction';
-
+import Footer from './Components/Footer'
+import Product from './Components/product/Product';
+import Users from './Components/admin/Users';
+import Admin from './Components/admin/Admin';
 
 
 
@@ -31,8 +34,12 @@ return (
         <Route path="/login" exact component={Login} />
         <Route path="/register" exact component={Register} />
         <Route path="/profile" exact component={UserProfile} />
-
+        <Route path="/product/:id" exact component={Product} />
+        <Route path="/users" exact component={Users} />
+        <Route  path="/admin" exact component={Admin} />
+        <Footer/>
       </Router>
+      
     </div>
   </div>
 );

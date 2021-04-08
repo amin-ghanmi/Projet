@@ -34,10 +34,11 @@ const productReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         loading: false,
-        products: state.map((product) =>
+        products: state.products.map((product) =>
           product._id === payload._id ? { ...product, ...payload } : product
         ),
       };
+
     case DELETE_PRODUCT_SUCCESS:
       return {
         ...state,
