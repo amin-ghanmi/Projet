@@ -1,11 +1,21 @@
 {
-  "name": "projet",
+  "name": "-y",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "concurrently \"cd backend && npm run dev \" \"cd client && npm start\""
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amin-ghanmi/Projet.git"
+  },
+  "bugs": {
+    "url": "https://github.com/amin-ghanmi/Projet/issues"
+  },
+  "homepage": "https://github.com/amin-ghanmi/Projet#readme",
+  "description": ""
 }
