@@ -51,3 +51,6 @@ footer a {
   cursor: pointer;
 }
 
+.card :hover{
+box-shadow: 10px 8 px 2 px red;
+}

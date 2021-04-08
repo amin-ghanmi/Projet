@@ -13,7 +13,7 @@ const Product = ({ match }) => {
           <Card
             style={{ width: "18rem" }}
             key={product._id}
-            className="col-md-4"
+            className="card :hover"
           >
             <Card.Img
               variant="top"
